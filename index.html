@@ -18,28 +18,12 @@
 
         }
         #myCanvas{
-            
-            cursor:url(/img/layout/backgrounds/zoom.cur), -moz-zoom-in;
             top: 30px;
         }
       
         #canvas2{
-            top: 30px;
-            cursor:url(/img/layout/backgrounds/zoom.cur), -moz-zoom-in;
-            object-fit: cover;
+            top: 30px;  
         }
-        #canvas2even>img{
-            object-fit: scale-down;
-        }
-
-        #canvas2:hover{
-            cursor:url(/img/layout/backgrounds/zoom.cur), -moz-zoom-in;
-        }
-
-        #myCanvas:hover{
-            cursor:url(/img/layout/backgrounds/zoom.cur), -moz-zoom-in;
-        }
-
 
     </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
@@ -61,7 +45,7 @@
 
 
 <!-- Video Snapshot -->
-<canvas id="canvas2" width="300px" height="200px" z-index="7" top="200px" object-fit="scale-down" ></canvas>
+<canvas id="canvas2" width="300px" height="200px" z-index="7" top="200px" ></canvas>
 
 
 <script>
@@ -109,8 +93,8 @@
 
         jQuery(image).load(function(){
             context.drawImage(iamge, 0, 0);
-            image.style.height = '100%';
-            image.style.width = '100%';
+            image.style.height = 'auto';
+            image.style.width = 'auto';
         });
 
         jQuery(canvas).click(function(event){
