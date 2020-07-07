@@ -14,40 +14,15 @@
       
     </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script>
-        jQuery(document).ready(function(){
-            var canvas = $("#myCanvas").get(0);
-            var context =canvas.getContext("2d");
-            var image = new Image();
-            image.src = "test.png";
-
-            jQuery(image).load(function(){
-                context.drawImage(image, 0, 0);
-            });
-
-            jQuery(canvas).click(function(event){
-                var canvasGap = $(canvas).offset();
-                var actualX = Math.floor(event.pageX - canvasGap.left);
-                var actualY = Math.floor(event.pageY - canvasGap.top);
-
-                var pixelData = context.getImageData(actualX, actualY, 1, 1);
-                var data = pixelData.data;
-                var pixelColor = "rgba(" + data[0] + "," + data[1] + "," + data[2] + "," + data[3] + ")";
-
-                $("#display").css("backgroundColor", pixelColor);
-                $("#colorCode").text("rgba(" + data[0] + "," + data[1] + "," + data[2] + "," + data[3] + ")");
-
-            });
-        });
-    </script>
+    
 </head>
 <body>
     
 <canvas id="myCanvas">
     your browser suck!!!
 </canvas>
-<div id="display" style="width:200px;height:100px; margin-top:199px;"></div>
-<p id="colorCode"></p>
+<div id="display" style="width:200px;height:100px; margin-top:199px; z-index: 7;"></div>
+<p id="colorCode" style="z-index: 7;"></p>
 
 
 <!-- Stream video via webcam -->
@@ -61,16 +36,11 @@
 </div>
 
 <!-- Video Snapshot -->
-<canvas id="canvas" width="640" height="480"></canvas>
+<canvas id="canvas" width="100%" height="100%"></canvas>
 
-<!-- Save Captured Image -->
-<form method="POST" action="upload_image.php">
-    <input id="image_URI" name="image_URI" type="text" placeholder="DataURL Here">
-    <input id="image_name" name="image_name" type="text" placeholder="Image Name" value="imageX">
-    <button id="save_image" name="save_image" type="submit" value="Submit">Save Image</button>
-</form>
+
 <script>
-    //https://www.youtube.com/watch?v=sL5-FhULalM
+
     'use strict';
     const video = document.getElementById('video');
     const canvas = document.getElementById('canvas');
@@ -105,6 +75,34 @@
         document.getElementById("image_URI").value = dataURI;
     });
     
+    
+</script>
+
+<script>
+    jQuery(document).ready(function(){
+        var canvas = $("#myCanvas").get(0);
+        var context =canvas.getContext("2d");
+        var image = document.getElementById("image_URI").value
+        //image.src = "test.png";
+
+        jQuery(image).load(function(){
+            context.drawImage(image, 0, 0);
+        });
+
+        jQuery(canvas).click(function(event){
+            var canvasGap = $(canvas).offset();
+            var actualX = Math.floor(event.pageX - canvasGap.left);
+            var actualY = Math.floor(event.pageY - canvasGap.top);
+
+            var pixelData = context.getImageData(actualX, actualY, 1, 1);
+            var data = pixelData.data;
+            var pixelColor = "rgba(" + data[0] + "," + data[1] + "," + data[2] + "," + data[3] + ")";
+
+            $("#display").css("backgroundColor", pixelColor);
+            $("#colorCode").text("rgba(" + data[0] + "," + data[1] + "," + data[2] + "," + data[3] + ")");
+
+        });
+    });
 </script>
 </body>
 </html>
