@@ -1,37 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="icon" type="image/png" href="favicon.png"/>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
+        
         canvas
         {
             position: absolute;
             left: 0;
             top: 53px;
-           
-            
         }
-        #snap{
-            border: none;
-        }
-        #snap:hover{
-            cursor: pointer;
-            opacity:0.5;
-
-        }
-        #myCanvas{
+        
+        #myCanvas
+        {
             left: 0;
-      width: 100%;
+            width: 100%;
         }
       
-        #canvas2{
+        #canvas2
+        {
             top: 53px;
-            
-          
         }
 
+        button
+        {
+        border: none;
+        object-fit: cover;
+        }
+        
+        button:hover
+        {
+        cursor: pointer;
+        opacity:0.5;     
+        }
 
     </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
@@ -43,9 +48,10 @@
 
     <div class="controller" style="text-align: center; ">
         <button id="snap" style="z-index:7;height: 38px; width: 50px;  left: 50%; margin-left: -19px; background: url(camera.png)"></button>
+        <button id="reset" style="z-index:7; height: 45px; width: 36px; margin-left: 10px; background: url(reset.png); display: inline;"></button>
     </div>
 
-
+   
 
 <!-- Stream video via webcam -->
 <div class="video-wrap">
@@ -53,7 +59,7 @@
 </div>
 
 <!-- Video Snapshot -->
-<canvas id="canvas2"  z-index="7" top="200px" ></canvas></div>
+<canvas id="canvas2"  z-index="6" top="200px" ></canvas></div>
 
 
 
@@ -66,6 +72,7 @@
     const video = document.getElementById('video');
     const canvas = document.getElementById('canvas2');
     const snap = document.getElementById('snap');
+    const reset = document.getElementById('reset');
     const errorMsgElement = document.getElementById('spanErrorMsg');
     const constraints = {
         audio: false,
@@ -95,7 +102,14 @@
         const myCanvas = document.querySelector("#canvas2");
         
     });
-    
+
+
+    reset.addEventListener("click", function(){
+        
+        document.getElementById("video").style.display = 'block';
+        
+        
+    });
 
     jQuery(document).ready(function(){
         var canvas = $("#myCanvas").get(0);
