@@ -31,6 +31,15 @@
             object-fit: scale-down;
         }
 
+        #canvas2:hover{
+            cursor:url(/img/layout/backgrounds/zoom.cur), -moz-zoom-in;
+        }
+
+        #myCanvas:hover{
+            cursor:url(/img/layout/backgrounds/zoom.cur), -moz-zoom-in;
+        }
+
+
     </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     
@@ -99,6 +108,8 @@
 
         jQuery(image).load(function(){
             context.drawImage(iamge, 0, 0);
+            image.style.height = '100%';
+            image.style.width = '100%';
         });
 
         jQuery(canvas).click(function(event){
