@@ -26,7 +26,7 @@
 
 <!-- Stream video via webcam -->
 <div class="video-wrap">
-    <video id="video" style="top:0px;" playsinline autoplay></video>
+    <video id="video" style="top:0px; z-index:7;"  playsinline autoplay></video>
 </div>
 
 <!-- Trigger canvas web API -->
@@ -68,6 +68,7 @@
     //Draw Image
     let context = canvas.getContext('2d');
     snap.addEventListener("click", function(){
+        document.getElementById("video").style.zIndex = "-1";
         context.drawImage(video, 0, 0, 640, 480);
         const myCanvas = document.querySelector("#canvas2");
         
