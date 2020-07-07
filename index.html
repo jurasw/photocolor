@@ -68,7 +68,7 @@
     //Draw Image
     let context = canvas.getContext('2d');
     snap.addEventListener("click", function(){
-        document.getElementById("video").style.zIndex = "-1";
+        document.getElementById("video").style.display = 'none';
         context.drawImage(video, 0, 0, 640, 480);
         const myCanvas = document.querySelector("#canvas2");
         
