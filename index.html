@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        canvas
+        {
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+    </style>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script>
+        jQuery(document).ready(function(){
+            var canvas = $("#myCanvas").get(0);
+            var context =canvas.getContext("2d");
+            var image = new Image();
+            image.src = "test.png";
+
+            jQuery(image).load(function(){
+                context.drawImage(image, 0, 0);
+            });
+
+            jQuery(canvas).click(function(event){
+                var canvasGap = $(canvas).offset();
+                var actualX = Math.floor(event.pageX - canvasGap.left);
+                var actualY = Math.floor(event.pageY - canvasGap.top);
+
+                var pixelData = context.getImageData(actualX, actualY, 1, 1);
+                var data = pixelData.data;
+                var pixelColor = "rgba(" + data[0] + "," + data[1] + "," + data[2] + "," + data[3] + ")";
+
+                ("#display").css("backgroundColor", pixelColor);
+
+            });
+        });
+    </script>
+</head>
+<body>
+    
+<canvas id="myCanvas">
+    your browser suck!!!
+</canvas>
+<div id="display" style="width:200px;height:100px;"></div>
+</body>
+</html>
