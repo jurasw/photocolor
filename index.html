@@ -90,7 +90,7 @@
     let context = canvas.getContext('2d');
     snap.addEventListener("click", function(){
         document.getElementById("video").style.display = 'none';
-        context.drawImage(video, 0, 53, 400, 200);
+        context.drawImage(video, 0, 0);
         const myCanvas = document.querySelector("#canvas2");
         
     });
@@ -103,7 +103,7 @@
         //image.src = "test.png";
 
         jQuery(image).load(function(){
-            context.drawImage(iamge, 0, 53, 400, 200);
+            context.drawImage(iamge, 0, 0);
 
         });
 
