@@ -81,11 +81,11 @@
     jQuery(document).ready(function(){
         var canvas = $("#myCanvas").get(0);
         //var context = canvas.getContext("2d");
-        var img = document.getElementById("canvas2");
+        var image = document.getElementById("canvas2");
         //image.src = "test.png";
 
         jQuery(image).load(function(){
-            context.drawImage(video, 0, 0, 640, 480);
+            context.drawImage(iamge, 0, 0);
         });
 
         jQuery(canvas).click(function(event){
