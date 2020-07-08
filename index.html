@@ -64,31 +64,7 @@ width: auto;
 #colorCodeHex::after{
     content: " )";
 }
-@media only screen and (max-width: 600px) {
 
-#reset{
-    display: none;
-}
-#snap{
-    display: none;
-}
-
-#video{
-    display: none;
-}
-
-label::after{
-    content: " or take a picture";
-
-}
-
-#display{
-    margin-top: 225px;
-}
-label{
-    width: 60%;
-}
-}
 
 
 
@@ -121,7 +97,35 @@ label{
 }
 
     
-  
+@media only screen and (max-width: 600px) {
+
+#reset{
+    display: none;
+}
+#snap{
+    display: none;
+}
+
+#video{
+    display: none;
+}
+
+
+
+#display{
+    margin-top: 225px;
+}
+label{
+    width: 50%;
+   
+}
+
+label::after{
+    content: " or take a picture";
+
+}
+
+}
 
 
 
@@ -223,7 +227,7 @@ function readImage() {
     });
     document.getElementById("video").style.display = 'none';
     canvas.style.display="block";
-    document.getElementById("colors").style.display = "block";;
+    document.getElementById("colors").style.display = "block";
     img.src = evt.target.result;
   });
   FR.readAsDataURL(this.files[0]);
