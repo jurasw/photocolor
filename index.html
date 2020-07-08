@@ -37,7 +37,29 @@
         cursor: pointer;
         opacity:0.5;     
         }
+        .copybtn{
+height: 15px;
+width: auto;
+        }
+.copybtn:hover{
+    cursor: pointer;
+        opacity:0.5;     
+}
+#colorCode::before{
+    content: "rgba( ";
+}
+#colorCode::after{
+    content: " )";
+}
+#colorCodeHex::before{
+    content: "hex( ";
+}
+#colorCodeHex::after{
+    content: " )";
+}
 
+
+ 
     </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     
@@ -153,7 +175,7 @@ EL("#fileUpload").addEventListener("change", readImage);
             var pixelColor = "rgba(" + data[0] + "," + data[1] + "," + data[2] + "," + data[3] + ")";
 
             $("#display").css("backgroundColor", pixelColor);
-            $("#colorCode").text("rgba(" + data[0] + "," + data[1] + "," + data[2] + "," + data[3] + ")");
+            $("#colorCode").text( data[0] + "," + data[1] + "," + data[2] + "," + data[3]);
 
             
 
@@ -175,12 +197,24 @@ EL("#fileUpload").addEventListener("change", readImage);
              
 
                 
-            $("#colorCodeHex").text("Hex(" + "#" + r + g + b + ")");
-
-
+            $("#colorCodeHex").text("#" + r + g + b);
+           
         });
-    });
+
     
+
+
+    });
+
+
+    function copyToClipboard(element) {
+  var $temp = $("<input>");
+  $("body").append($temp);
+  $temp.val($(element).text()).select();
+  document.execCommand("copy");
+  $temp.remove();
+}
+   
 
 </script>
 
@@ -194,8 +228,8 @@ EL("#fileUpload").addEventListener("change", readImage);
 </canvas>
 
 <div id="display" style="width:100%;height:100px; margin-top:450px; z-index: 7;"></div>
-<p id="colorCode" style="z-index: 7; text-align: center;"></p>
-<p id="colorCodeHex" style="z-index: 7; text-align: center;"></p>
+<p id="colorCode" style="z-index: 7; text-align: center;"></p> <img onclick="copyToClipboard('#colorCode')" id="copy1" class="copybtn" src="https://img.icons8.com/ios/50/000000/copy.png"/>
+<p id="colorCodeHex" style="z-index: 7; text-align: center;"></p> <img id="copy2" onclick="copyToClipboard('#colorCodeHex')" class="copybtn" src="https://img.icons8.com/ios/50/000000/copy.png"/>
 <img id="pic">
 </body>
 </html>
