@@ -16,19 +16,20 @@
     
             top: 127px;
     left: 50%;
-    margin-left: -125px;
+    margin-left: -150px;
         }
         
         #myCanvas
         {
             left: 50%;
-    margin-left: -125px;
+    margin-left: -150px;
             
         }
       
         #canvas2
         {
             top: 53px;
+            margin-left: -150px;
         }
 
         button
@@ -79,6 +80,10 @@ width: auto;
 label::after{
     content: " or take a picture";
 
+}
+
+#display{
+    margin-top: 225px;
 }
 
 }
@@ -187,7 +192,7 @@ label{
         document.getElementById("video").style.display = 'none';
         canvas.style.display="block";
         document.getElementById("colors").style.display = "block";
-        context.drawImage(video, 0, 0, 250, 150);
+        context.drawImage(video, 0, 0, 450, 150);
         const myCanvas = document.querySelector("#canvas2");
         
     });
