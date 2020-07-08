@@ -155,6 +155,29 @@ EL("#fileUpload").addEventListener("change", readImage);
             $("#display").css("backgroundColor", pixelColor);
             $("#colorCode").text("rgba(" + data[0] + "," + data[1] + "," + data[2] + "," + data[3] + ")");
 
+            
+
+            var r = data[0];
+            var g = data[1];
+            var b = data[2];
+      
+                            r = r.toString(16);
+                g = g.toString(16);
+                b = b.toString(16);
+           
+
+                if (r.length == 1)
+                    r = "0" + r;
+                if (g.length == 1)
+                    g = "0" + g;
+                if (b.length == 1)
+                    b = "0" + b;
+             
+
+                
+            $("#colorCodeHex").text("Hex(" + "#" + r + g + b + ")");
+
+
         });
     });
     
@@ -172,7 +195,7 @@ EL("#fileUpload").addEventListener("change", readImage);
 
 <div id="display" style="width:100%;height:100px; margin-top:450px; z-index: 7;"></div>
 <p id="colorCode" style="z-index: 7; text-align: center;"></p>
-
+<p id="colorCodeHex" style="z-index: 7; text-align: center;"></p>
 <img id="pic">
 </body>
 </html>
